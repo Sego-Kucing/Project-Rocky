@@ -12,6 +12,13 @@ public class RiverChunk : MonoBehaviour
     public List<Transform> obstacleSpawnPoints = new List<Transform>();
     private readonly List<GameObject> _activeObstacles = new List<GameObject>();
 
+    public void Activate(Vector3 worldPosition)
+    {
+        transform.position = worldPosition;
+        ClearObstacles();
+        gameObject.SetActive(true);
+    }
+
     public void ClearObstacles()
     {
         foreach(var obstacle in _activeObstacles)
