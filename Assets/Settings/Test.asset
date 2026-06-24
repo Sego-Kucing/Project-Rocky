@@ -28,7 +28,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Unity.RenderPipelines.Universal.Runtime::FlatKit.ObjectOutlineRendererFeature
   m_Active: 1
   settings:
-    passTag: RenderObjectsFeature
+    passTag: Flat Kit Per Object Outline
     Event: 300
     filterSettings:
       RenderQueueType: 0
@@ -57,7 +57,8 @@ MonoBehaviour:
       restoreCamera: 1
       offset: {x: 0, y: 0, z: 0, w: 0}
       cameraFieldOfView: 60
-  materials: []
+  materials:
+  - {fileID: 2100000, guid: b542c6d23dc6c8e4284385e516466df5, type: 2}
   autoReferenceMaterials: 1
 --- !u!114 &11400000
 MonoBehaviour:
