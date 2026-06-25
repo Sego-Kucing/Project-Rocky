@@ -613,7 +613,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 1550865115}
         m_TargetAssemblyTypeName: TeleBehaviour, Assembly-CSharp
         m_MethodName: BeginTeleport
         m_Mode: 1
@@ -2278,6 +2278,7 @@ RectTransform:
   - {fileID: 216008109}
   - {fileID: 579551586}
   - {fileID: 518541019}
+  - {fileID: 914846139}
   - {fileID: 1550865111}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -2348,7 +2349,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 655a0891c9231364e99bce48f716e404, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -2457,11 +2458,11 @@ RectTransform:
   m_LocalScale: {x: 0.91, y: 0.91, z: 0.91}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1550865111}
+  m_Father: {fileID: 671528684}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -565.8, y: -2000}
+  m_AnchoredPosition: {x: 0, y: -2000}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!4 &926499158 stripped
@@ -3562,7 +3563,7 @@ Camera:
     height: 1
   near clip plane: 0.3
   far clip plane: 1000
-  field of view: 60.000004
+  field of view: 70
   orthographic: 0
   orthographic size: 5
   m_Depth: -1
@@ -3588,8 +3589,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1440971125}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.0877838, y: 0, z: 0, w: 0.9961396}
-  m_LocalPosition: {x: 2.31, y: -22.71, z: -129.5}
+  m_LocalRotation: {x: 0.03122695, y: -0.86659324, z: 0.054665715, w: 0.49502808}
+  m_LocalPosition: {x: 25.03247, y: -21.33104, z: -68.78552}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -3748,6 +3749,7 @@ GameObject:
   - component: {fileID: 1550865113}
   - component: {fileID: 1550865112}
   - component: {fileID: 1550865114}
+  - component: {fileID: 1550865115}
   m_Layer: 5
   m_Name: Panel
   m_TagString: Untagged
@@ -3769,7 +3771,6 @@ RectTransform:
   m_Children:
   - {fileID: 780780602}
   - {fileID: 1008788842}
-  - {fileID: 914846139}
   m_Father: {fileID: 671528684}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
@@ -3823,10 +3824,43 @@ CanvasGroup:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1550865110}
   m_Enabled: 1
-  m_Alpha: 0
+  m_Alpha: 1
   m_Interactable: 1
   m_BlocksRaycasts: 1
   m_IgnoreParentGroups: 0
+--- !u!114 &1550865115
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1550865110}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9cfb27bccb3eee946a7059d80103f6a3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::TeleBehaviour
+  targetTransform: {fileID: 1550865111}
+  targetLocation: {fileID: 914846139}
+  useMovement: 1
+  moveSpeed: 1000
+  useDelayedStart: 0
+  delayedTime: 1
+  onCompleteMove:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1916521914}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
 --- !u!1 &1656974641
 GameObject:
   m_ObjectHideFlags: 0
@@ -4494,7 +4528,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1891984864
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4569,7 +4603,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1916521915
 MonoBehaviour:
   m_ObjectHideFlags: 0
