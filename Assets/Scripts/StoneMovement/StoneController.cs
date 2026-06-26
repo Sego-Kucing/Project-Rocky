@@ -1,16 +1,18 @@
 using UnityEngine;
+using UnityEngine.Events;
 
 public class StoneController : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-        
-    }
+    public enum State { Aiming, Charging, Flying, Sunk }
+    [System.Serializable] public class BounceEvent : UnityEvent<int> { }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    [Header("References")]
+    [Tooltip("Pivot point buat aiming si batu")]
+    public Transform aimPivot;
+
+    [Header("Aim Settings")]
+    [Tooltip("Max Degree left / right forward aiming to rotate")]
+    public float maxAimAngle = 45f;
+    [Tooltip("Degress per second to rotate the aim")]
+    public float aimRotateSpeed = 90f;
 }
