@@ -22,25 +22,27 @@ public class StoneController : MonoBehaviour
     public float powerOscillateSpeed = 1.5f;
     public float minThrowSpeed = 8f;
     public float maxThrowSpeed = 22f;
-    [Tooltip("Upward angle (degrees) added to the throw so the stone arcs forward instead of going flat.")]
-    public float launchElevationAngle = 15f;
+    [Tooltip("Upward angle (degrees) added to the throw. Keep this low (5-10) for a flat, realistic skim instead of a big lob.")]
+    public float launchElevationAngle = 8f;
 
     [Header("Flight Settings")]
-    public float gravity = 18f;
-    [Tooltip("Acceleration applied while holding Up/W (or Down/S, inverted) during flight.")]
-    public float verticalInputForce = 25f;
+    public float gravity = 20f;
+    [Tooltip("Acceleration applied while holding Up/W (or Down/S, inverted). IMPORTANT: keep this LOWER than gravity - holding Up should only soften a fall / stretch out a rise, it should never be able to cause a net climb on its own.")]
+    public float verticalInputForce = 12f;
     [Tooltip("Max vertical speed allowed (up or down) during flight.")]
-    public float maxVerticalSpeed = 12f;
+    public float maxVerticalSpeed = 10f;
     [Tooltip("Side movement speed while holding A/D or Left/Right during flight.")]
     public float horizontalMoveSpeed = 6f;
 
     [Header("Water & Bounce")]
     [Tooltip("World Y height of the water surface the stone bounces on.")]
     public float waterLevel = 0f;
-    [Tooltip("Upward kick on bounce = downward speed on impact * this. Below 1 = loses energy each bounce.")]
-    [Range(0f, 1f)] public float bounceDamping = 0.7f;
-    [Tooltip("If the bounce kick would be weaker than this, the stone sinks instead.")]
-    public float minBounceVelocity = 3f;
+    [Tooltip("Upward kick strength on a clean, gentle touch, before decay/softness are applied.")]
+    public float baseBounceKick = 7f;
+    [Tooltip("If downward speed on impact exceeds this, the stone hits too hard and sinks instead of skipping - like a real stone digging in instead of skimming.")]
+    public float maxSafeImpactSpeed = 6f;
+    [Tooltip("Each bounce's kick is multiplied by this (compounding), so skips naturally get lower over time even with perfect input.")]
+    [Range(0f, 1f)] public float decayPerBounce = 0.85f;
     [Tooltip("Bounces needed before the trampoline boost should trigger (handled by another system via onReadyForBoost).")]
     public int bouncesBeforeBoost = 4;
 
@@ -130,21 +132,25 @@ public class StoneController : MonoBehaviour
     private void ResolveBounce()
     {
         float incomingDownSpeed = Mathf.Abs(_velocity.y);
-        float kick = incomingDownSpeed * bounceDamping;
 
-        if (kick < minBounceVelocity)
+        if (incomingDownSpeed > maxSafeImpactSpeed)
         {
             CurrentState = State.Sunk;
             _velocity = Vector3.zero;
             onSunk?.Invoke();
-            Debug.Log("Stone sunk - bounce kick too weak.");
+            Debug.Log($"Stone sunk - hit too hard ({incomingDownSpeed:F1} > {maxSafeImpactSpeed:F1}). Ease off Up a bit before touchdown next time.");
             return;
         }
+
+        // Gentler touches get a kick closer to baseBounceKick; harder (but still safe) touches get a smaller one.
+        float softness = 1f - (incomingDownSpeed / maxSafeImpactSpeed);
+        float decay = Mathf.Pow(decayPerBounce, BounceCount);
+        float kick = baseBounceKick * Mathf.Lerp(0.4f, 1f, softness) * decay;
 
         _velocity.y = kick;
         BounceCount++;
         onBounce?.Invoke(BounceCount);
-        Debug.Log($"Bounce #{BounceCount} - kick: {kick:F1}");
+        Debug.Log($"Bounce #{BounceCount} - impact: {incomingDownSpeed:F1}, kick: {kick:F1}");
 
         if (BounceCount >= bouncesBeforeBoost)
         {
