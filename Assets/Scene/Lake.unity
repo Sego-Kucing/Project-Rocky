@@ -1443,6 +1443,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6003699447324628597, guid: 261d291e52798a3438a828008ebe7b0c, type: 3}
+      propertyPath: m_TagString
+      value: Water
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -6585,6 +6589,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Sound
       objectReference: {fileID: 0}
+    - target: {fileID: 8978004637422771108, guid: c76e2f2f3273a6040bbf235a0dba7938, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -6866,6 +6874,10 @@ GameObject:
   - component: {fileID: 4234847887749123303}
   - component: {fileID: 2414913115461114297}
   - component: {fileID: 1198918421227966746}
+  - component: {fileID: 4234847887749123307}
+  - component: {fileID: 4234847887749123306}
+  - component: {fileID: 4234847887749123305}
+  - component: {fileID: 4234847887749123304}
   m_Layer: 0
   m_Name: Rocky
   m_TagString: Untagged
@@ -7063,6 +7075,92 @@ Transform:
   - {fileID: 214713871}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &4234847887749123304
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2861455424083648628}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ffbe6d26048a2694ab052d6265e02b35, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::RockPowerUp
+  availablePowerUps: []
+--- !u!114 &4234847887749123305
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2861455424083648628}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1c08f3c8e5207d94484cf83594892116, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::RockController
+  currentState: 0
+  aimSpeed: 50
+  maxAimAngle: 45
+  maxLaunchPower: 25
+  chargeSpeed: 2
+  inAirControlForce: 5
+  maxMidAirBounces: 3
+  midAirBounceForce: 10
+  minSpeedToSkip: 3
+  velocityDampenPerBounce: 0.8
+  waterBounceUpwardForce: 6
+  gameOverSceneName: Game Over
+  timeToFadeOut: 2
+--- !u!54 &4234847887749123306
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2861455424083648628}
+  serializedVersion: 5
+  m_Mass: 1
+  m_LinearDamping: 0
+  m_AngularDamping: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 1
+--- !u!65 &4234847887749123307
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2861455424083648628}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.49278075, y: 0.25713322, z: 0.5935745}
+  m_Center: {x: 0.0030804724, y: -0.011274025, z: 0.021953687}
 --- !u!1001 &4465136769936417114
 PrefabInstance:
   m_ObjectHideFlags: 0
