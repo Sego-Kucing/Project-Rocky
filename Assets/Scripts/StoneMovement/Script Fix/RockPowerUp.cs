@@ -17,7 +17,7 @@ public class RockPowerUp : MonoBehaviour
 
     [Header("Power Up Settings")]
     [Tooltip("Daftar semua power up yang bisa di ambil si batu")]
-    public List<PowerUpConfig> availablePowerUps = List<PowerUpConfig>();
+    public List<PowerUpConfig> availablePowerUps = new List<PowerUpConfig>();
 
     private Rigidbody rb;
     private Coroutine activePowerUpRoutine;
