@@ -4432,6 +4432,7 @@ GameObject:
   - component: {fileID: 1440971129}
   - component: {fileID: 1440971131}
   - component: {fileID: 1440971130}
+  - component: {fileID: 1440971132}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -4506,8 +4507,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1440971125}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.03122695, y: -0.86659324, z: 0.054665715, w: 0.49502808}
-  m_LocalPosition: {x: 31.93, y: -20.25, z: -63.27}
+  m_LocalRotation: {x: 0.22067823, y: -0.048582543, z: 0.011006465, w: 0.9740738}
+  m_LocalPosition: {x: 2.8, y: -20.9, z: -126.178}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -4577,7 +4578,7 @@ MonoBehaviour:
   IgnoreTimeScale: 0
   WorldUpOverride: {fileID: 0}
   ChannelMask: -1
-  UpdateMethod: 2
+  UpdateMethod: 0
   BlendUpdateMethod: 1
   LensModeOverride:
     Enabled: 0
@@ -4605,6 +4606,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp-firstpass::FlatKit.AutoLoadPipelineAsset
   pipelineAsset: {fileID: 11400000, guid: 15331106d2235bd43ae67a6540435aeb, type: 2}
+--- !u!114 &1440971132
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1440971125}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a5e9f4a633ff1e545bde196f770a278f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::StoneCamera
+  target: {fileID: 4234847887749123303}
+  offset: {x: 0, y: 3, z: -7}
+  smoothSpeed: 10
+  overrideCinemachine: 1
 --- !u!1 &1497746193
 GameObject:
   m_ObjectHideFlags: 0
@@ -5578,6 +5595,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1891984865}
   - component: {fileID: 1891984864}
+  - component: {fileID: 1891984867}
+  - component: {fileID: 1891984866}
   m_Layer: 0
   m_Name: CinemachineCamera (1)
   m_TagString: Untagged
@@ -5636,13 +5655,68 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1891984863}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.031226948, y: -0.8665932, z: 0.05466571, w: 0.49502805}
-  m_LocalPosition: {x: 31.93, y: -20.25, z: -63.27}
+  m_LocalRotation: {x: 0.22067823, y: -0.048582543, z: 0.011006465, w: 0.9740738}
+  m_LocalPosition: {x: 2.8, y: -20.9, z: -126.178}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 7.219, y: -120.527, z: 0}
+--- !u!114 &1891984866
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1891984863}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f38bda98361e1de48a4ca2bd86ea3c17, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.Cinemachine::Unity.Cinemachine.CinemachineRotationComposer
+  Composition:
+    ScreenPosition: {x: 0, y: 0}
+    DeadZone:
+      Enabled: 0
+      Size: {x: 0.2, y: 0.2}
+    HardLimits:
+      Enabled: 0
+      Size: {x: 0.8, y: 0.8}
+      Offset: {x: 0, y: 0}
+  CenterOnActivate: 1
+  TargetOffset: {x: 0, y: 0, z: 0}
+  Damping: {x: 0.5, y: 0.5}
+  Lookahead:
+    Enabled: 0
+    Time: 0
+    Smoothing: 0
+    IgnoreY: 0
+--- !u!114 &1891984867
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1891984863}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 625c14eee3ad46c99df7c7c891ef668a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.Cinemachine::Unity.Cinemachine.CinemachineThirdPersonFollow
+  Damping: {x: 0.1, y: 0.5, z: 0.3}
+  ShoulderOffset: {x: 0.5, y: 2, z: 0}
+  VerticalArmLength: 0.4
+  CameraSide: 1
+  CameraDistance: 5
+  AvoidObstacles:
+    Enabled: 0
+    CollisionFilter:
+      serializedVersion: 2
+      m_Bits: 1
+    IgnoreTag: 
+    CameraRadius: 0.2
+    DampingIntoCollision: 0
+    DampingFromCollision: 0.5
 --- !u!1 &1916521914
 GameObject:
   m_ObjectHideFlags: 0
@@ -7103,8 +7177,9 @@ MonoBehaviour:
   currentState: 0
   aimSpeed: 50
   maxAimAngle: 45
-  maxLaunchPower: 25
-  chargeSpeed: 2
+  minLaunchPower: 20
+  maxLaunchPower: 80
+  chargeSpeed: 1.5
   inAirControlForce: 5
   maxMidAirBounces: 3
   midAirBounceForce: 10
@@ -7138,7 +7213,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 80
   m_CollisionDetection: 1
 --- !u!65 &4234847887749123307
 BoxCollider:

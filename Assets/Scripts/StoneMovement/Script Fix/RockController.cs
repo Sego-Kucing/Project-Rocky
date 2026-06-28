@@ -14,9 +14,11 @@ public class RockController : MonoBehaviour
     [Tooltip("Batas Rotasi Angle")]
     public float maxAimAngle = 45f;
 
-    public float maxLaunchPower = 20f;
+    [Tooltip("Tenaga minimal agar lemparan tidak terlalu pelan")]
+    public float minLaunchPower = 20f;
+    public float maxLaunchPower = 80f;
     [Tooltip("Seberapa cepat charge bar nya")]
-    public float chargeSpeed = 2f;
+    public float chargeSpeed = 1.5f;
 
     [Header("In-Air Settings")]
     public float inAirControlForce = 5f;
@@ -53,6 +55,8 @@ public class RockController : MonoBehaviour
         rb = GetComponent<Rigidbody>();
         rockCollider = GetComponent<Collider>();
         currentBouncesLeft = maxMidAirBounces;
+
+        rb.isKinematic = true;
     }
 
     void Update()
@@ -91,7 +95,9 @@ public class RockController : MonoBehaviour
             
             case RockState.Charging:
                 chargeTimer += Time.deltaTime * chargeSpeed;
-                currentPower = Mathf.PingPong(chargeTimer, maxLaunchPower);
+                // Hasil presentase
+                float powerPercent = Mathf.PingPong(chargeTimer, 1f);
+                currentPower = Mathf.Lerp(minLaunchPower, maxLaunchPower, powerPercent);
 
                 if (Input.GetKeyDown(KeyCode.Space))
                 {
@@ -114,9 +120,11 @@ public class RockController : MonoBehaviour
     private void LaunchRock()
     {
         currentState = RockState.InAir;
-        Vector3 launchDirection = transform.forward + (Vector3.up * 0.5f);
 
-        rb.AddForce(launchDirection.normalized * currentPower, ForceMode.Impulse);
+        rb.isKinematic = false;
+        Vector3 launchDirection = transform.forward + (Vector3.up * 0.2f);
+
+        rb.AddForce(launchDirection.normalized * currentPower, ForceMode.VelocityChange);
     }
 
     private void ApplyInAirMovement()
