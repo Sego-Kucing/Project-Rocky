@@ -2472,7 +2472,10 @@ VisualEffect:
   m_ResourceVersion: 1
   m_PropertySheet:
     m_Float:
-      m_Array: []
+      m_Array:
+      - m_Value: 2
+        m_Name: Duration
+        m_Overridden: 1
     m_Vector2f:
       m_Array: []
     m_Vector3f:
@@ -2928,7 +2931,6 @@ RectTransform:
   - {fileID: 1550865111}
   - {fileID: 1594613183}
   - {fileID: 1742637132}
-  - {fileID: 849057562}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -3104,16 +3106,16 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 849057561}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.33333334, y: 0.33333334, z: 0.33333334}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 671528684}
+  m_Father: {fileID: 1742637132}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: 444.22, y: 144.82}
+  m_AnchoredPosition: {x: 2.773285, y: -51.72667}
   m_SizeDelta: {x: 299.3, y: 300}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &849057563
@@ -5560,7 +5562,7 @@ MonoBehaviour:
   offset: {x: 0, y: 3, z: -7}
   smoothSpeed: 10
   cinemachineBrain: {fileID: 348624013}
-  cinematicDuration: 3
+  cinematicDuration: 4
   overrideCinemachine: 1
 --- !u!1 &1497746193
 GameObject:
@@ -6350,6 +6352,7 @@ RectTransform:
   - {fileID: 1649381983}
   - {fileID: 995253655}
   - {fileID: 2089379075}
+  - {fileID: 849057562}
   m_Father: {fileID: 671528684}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
@@ -6939,7 +6942,10 @@ VisualEffect:
   m_ResourceVersion: 1
   m_PropertySheet:
     m_Float:
-      m_Array: []
+      m_Array:
+      - m_Value: 2
+        m_Name: Duration
+        m_Overridden: 1
     m_Vector2f:
       m_Array: []
     m_Vector3f:
@@ -7748,67 +7754,6 @@ MeshRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!1001 &797168878036477792
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 383828838025203271, guid: df14c33a923ef9f4e89f9442de667f01, type: 3}
-      propertyPath: m_Name
-      value: Ripple
-      objectReference: {fileID: 0}
-    - target: {fileID: 383828838025203271, guid: df14c33a923ef9f4e89f9442de667f01, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7130914910578087181, guid: df14c33a923ef9f4e89f9442de667f01, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7130914910578087181, guid: df14c33a923ef9f4e89f9442de667f01, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -27.8
-      objectReference: {fileID: 0}
-    - target: {fileID: 7130914910578087181, guid: df14c33a923ef9f4e89f9442de667f01, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: -117.62
-      objectReference: {fileID: 0}
-    - target: {fileID: 7130914910578087181, guid: df14c33a923ef9f4e89f9442de667f01, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 0.7071068
-      objectReference: {fileID: 0}
-    - target: {fileID: 7130914910578087181, guid: df14c33a923ef9f4e89f9442de667f01, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: -0.7071068
-      objectReference: {fileID: 0}
-    - target: {fileID: 7130914910578087181, guid: df14c33a923ef9f4e89f9442de667f01, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7130914910578087181, guid: df14c33a923ef9f4e89f9442de667f01, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7130914910578087181, guid: df14c33a923ef9f4e89f9442de667f01, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: -90
-      objectReference: {fileID: 0}
-    - target: {fileID: 7130914910578087181, guid: df14c33a923ef9f4e89f9442de667f01, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7130914910578087181, guid: df14c33a923ef9f4e89f9442de667f01, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: df14c33a923ef9f4e89f9442de667f01, type: 3}
 --- !u!4 &994565360784371666
 Transform:
   m_ObjectHideFlags: 0
@@ -8145,11 +8090,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::RockController
   currentState: 0
+  cinematicDuration: 4
   aimSpeed: 50
   maxAimAngle: 45
   minLaunchPower: 20
   maxLaunchPower: 80
   chargeSpeed: 1.5
+  powerSlider: {fileID: 1742637133}
+  powerUIContainer: {fileID: 1742637131}
   inAirControlForce: 5
   maxMidAirBounces: 3
   midAirBounceForce: 10
@@ -8159,6 +8107,7 @@ MonoBehaviour:
   gameOverSceneName: Game Over
   timeToFadeOut: 2
   speedLineEffect: {fileID: 1834826375}
+  ripplePrefab: {fileID: 383828838025203271, guid: df14c33a923ef9f4e89f9442de667f01, type: 3}
 --- !u!54 &4234847887749123306
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -8732,7 +8681,6 @@ SceneRoots:
   - {fileID: 1052537465}
   - {fileID: 671528684}
   - {fileID: 656405841}
-  - {fileID: 797168878036477792}
   - {fileID: 3888911080660032283}
   - {fileID: 8016792113144454672}
   - {fileID: 1686714424}
