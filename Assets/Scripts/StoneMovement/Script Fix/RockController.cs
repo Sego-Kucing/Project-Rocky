@@ -1,12 +1,17 @@
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
 [RequireComponent(typeof(Rigidbody))]
 public class RockController : MonoBehaviour
 {
-    public enum RockState { Aiming, Charging, InAir, Stopped, Sinking }
+    public enum RockState { Cinematic, Aiming, Charging, InAir, Stopped, Sinking }
     [Header("State")]
-    public RockState currentState = RockState.Aiming;
+    public RockState currentState = RockState.Cinematic;
+
+    [Header("Cinematic Settings")]
+    [Tooltip("Samakan angka ini dengan Cinematic Duration di StoneCamera")]
+    public float cinematicDuration = 4f;
 
     [Header("Aiming & Launch Settings")]
     [Tooltip("Kecepatan Rotasi saat mengarahkan batu kiri / kanan")]
@@ -19,6 +24,13 @@ public class RockController : MonoBehaviour
     public float maxLaunchPower = 80f;
     [Tooltip("Seberapa cepat charge bar nya")]
     public float chargeSpeed = 1.5f;
+
+    // Variable UI
+    [Header("UI Settings")]
+    [Tooltip("Masukkan object slider")]
+    public Slider powerSlider;
+    [Tooltip("Masukkan object pembungkus UI untuk di hilangkan")]
+    public GameObject powerUIContainer;
 
     [Header("In-Air Settings")]
     public float inAirControlForce = 5f;
@@ -40,6 +52,9 @@ public class RockController : MonoBehaviour
 
     [Tooltip("Masukkan object si speedline")]
     public GameObject speedLineEffect;
+
+    [Tooltip("Masukkan prefab ripple ke sini")]
+    public GameObject ripplePrefab;
 
     // Initial Setup
     private Rigidbody rb;
@@ -65,6 +80,25 @@ public class RockController : MonoBehaviour
         {
             speedLineEffect.SetActive(false);
         }
+
+        if (powerUIContainer != null) powerUIContainer.SetActive(false);
+        if (powerSlider != null) powerSlider.value = 0f;
+
+        if (cinematicDuration > 0f)
+        {
+            currentState = RockState.Cinematic;
+            Invoke(nameof(StartAiming), cinematicDuration);
+        }
+        else
+        {
+            StartAiming();
+        }
+    }
+
+    private void StartAiming()
+    {
+        currentState = RockState.Aiming;
+        if (powerUIContainer != null) powerUIContainer.SetActive(true);
     }
 
     void Update()
@@ -107,6 +141,11 @@ public class RockController : MonoBehaviour
                 float powerPercent = Mathf.PingPong(chargeTimer, 1f);
                 currentPower = Mathf.Lerp(minLaunchPower, maxLaunchPower, powerPercent);
 
+                if (powerSlider != null)
+                {
+                    powerSlider.value = powerPercent;
+                }
+
                 if (Input.GetKeyDown(KeyCode.Space))
                 {
                     LaunchRock();
@@ -128,6 +167,11 @@ public class RockController : MonoBehaviour
     private void LaunchRock()
     {
         currentState = RockState.InAir;
+
+        if (powerUIContainer != null)
+        {
+            powerUIContainer.SetActive(false);
+        }
 
         rb.isKinematic = false;
 
@@ -163,12 +207,22 @@ public class RockController : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Water") && currentState == RockState.InAir)
         {
-            HandleWaterBounce();
+            HandleWaterBounce(collision);
         }
     }
 
-    private void HandleWaterBounce()
+    private void HandleWaterBounce(Collision collision)
     {
+        if (ripplePrefab != null && collision.contacts.Length > 0)
+        {
+            // Ambil titik point kosong, untuk ripple effect
+            Vector3 contactPoint = collision.contacts[0].point;
+            Vector3 spawnPos = new Vector3(transform.position.x, contactPoint.y, transform.position.z);
+
+            // Munculin Ripple di map
+            GameObject spawnedRipple = Instantiate(ripplePrefab, spawnPos, ripplePrefab.transform.rotation);
+            Destroy(spawnedRipple, 3f);
+        }
         Vector3 horizontalVelocity = new Vector3(rb.linearVelocity.x, 0, rb.linearVelocity.z);
 
         if (horizontalVelocity.magnitude >= minSpeedToSkip)
