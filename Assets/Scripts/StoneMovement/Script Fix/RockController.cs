@@ -181,7 +181,14 @@ public class RockController : MonoBehaviour
         if (currentState == RockState.Sinking && !isGameOverTriggered)
         {
             isGameOverTriggered = true;
-            Invoke(nameof(LoadGameOver), timeToFadeOut);
+            if (SceneFader.Instance != null)
+            {
+                SceneFader.Instance.FadeAndLoadScene(gameOverSceneName, timeToFadeOut);
+            }
+            else
+            {
+                Invoke(nameof(LoadGameOver), timeToFadeOut);
+            }
         }
     }
 
