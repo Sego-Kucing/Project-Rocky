@@ -38,6 +38,9 @@ public class RockController : MonoBehaviour
     [Tooltip("Waktu delay dari batu untuk pindah ke scene game overnya")]
     public float timeToFadeOut = 2f;
 
+    [Tooltip("Masukkan object si speedline")]
+    public GameObject speedLineEffect;
+
     // Initial Setup
     private Rigidbody rb;
     private Collider rockCollider;
@@ -57,6 +60,11 @@ public class RockController : MonoBehaviour
         currentBouncesLeft = maxMidAirBounces;
 
         rb.isKinematic = true;
+
+        if (speedLineEffect != null)
+        {
+            speedLineEffect.SetActive(false);
+        }
     }
 
     void Update()
@@ -122,6 +130,12 @@ public class RockController : MonoBehaviour
         currentState = RockState.InAir;
 
         rb.isKinematic = false;
+
+        if (speedLineEffect != null)
+        {
+            speedLineEffect.SetActive(true);
+        }
+
         Vector3 launchDirection = transform.forward + (Vector3.up * 0.2f);
 
         rb.AddForce(launchDirection.normalized * currentPower, ForceMode.VelocityChange);
@@ -173,6 +187,11 @@ public class RockController : MonoBehaviour
             currentState = RockState.Sinking;
             rockCollider.isTrigger = true;
             rb.linearVelocity = rb.linearVelocity * 0.3f;
+
+            if (speedLineEffect != null)
+            {
+                speedLineEffect.SetActive(false);
+            }
         }
     }
 
