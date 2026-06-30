@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using UnityEngine.Events;
 
 [RequireComponent(typeof(Rigidbody))]
 public class RockController : MonoBehaviour
@@ -55,6 +56,9 @@ public class RockController : MonoBehaviour
 
     [Tooltip("Masukkan prefab ripple ke sini")]
     public GameObject ripplePrefab;
+
+    [Header("Event Game Over")]
+    public UnityEvent gameOverEvent;
 
     // Initial Setup
     private Rigidbody rb;
@@ -267,6 +271,6 @@ public class RockController : MonoBehaviour
 
     private void LoadGameOver()
     {
-        SceneManager.LoadScene(gameOverSceneName);
+        gameOverEvent.Invoke();
     }
 }
