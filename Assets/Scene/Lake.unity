@@ -751,6 +751,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4300739723787086813, guid: a6e3291feb964604c8f2c0ec77b10a62, type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4300739723787086813, guid: a6e3291feb964604c8f2c0ec77b10a62, type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4300739723787086813, guid: a6e3291feb964604c8f2c0ec77b10a62, type: 3}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8965736783056730472, guid: a6e3291feb964604c8f2c0ec77b10a62, type: 3}
       propertyPath: m_Name
       value: FadeCanvas
@@ -1420,23 +1432,23 @@ MonoBehaviour:
   SplineOffset: {x: 0, y: 0, z: 0}
   CameraRotation: 1
   Damping:
-    Enabled: 0
+    Enabled: 1
     Position: {x: 0, y: 0, z: 0}
     Angular: 0
   AutomaticDolly:
     Enabled: 1
     Method:
-      rid: 5685628062953373960
+      rid: 5685628085732376651
   m_LegacyPosition: -1
   m_LegacyUnits: 0
   m_LegacySpline: {fileID: 0}
   references:
     version: 2
     RefIds:
-    - rid: 5685628062953373960
+    - rid: 5685628085732376651
       type: {class: SplineAutoDolly/FixedSpeed, ns: Unity.Cinemachine, asm: Unity.Cinemachine}
       data:
-        Speed: 30
+        Speed: 25
 --- !u!1001 &393424291
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2153,7 +2165,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &555718357
 Transform:
   m_ObjectHideFlags: 0
@@ -2177,7 +2189,7 @@ VFXRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 555718356}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 0
   m_ReceiveShadows: 0
   m_DynamicOccludee: 1
@@ -4023,9 +4035,9 @@ MonoBehaviour:
           z: -0.054976158
           w: -0.49895337
     - Position:
-        x: 10.01
-        y: -13.6
-        z: -147.78
+        x: 24.29
+        y: -12.86
+        z: -146
       TangentIn:
         x: 0
         y: 0
