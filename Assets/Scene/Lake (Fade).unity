@@ -2155,6 +2155,7 @@ GameObject:
   m_Component:
   - component: {fileID: 349066006}
   - component: {fileID: 349066007}
+  - component: {fileID: 349066008}
   m_Layer: 5
   m_Name: Game Over
   m_TagString: Untagged
@@ -2198,6 +2199,57 @@ CanvasGroup:
   m_Interactable: 1
   m_BlocksRaycasts: 1
   m_IgnoreParentGroups: 0
+--- !u!114 &349066008
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 349066005}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 92b331b4ad68d8c4cb21f67d4006b56c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::GameOverUI
+  onNewRun:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 4234847887749123312}
+        m_TargetAssemblyTypeName: RockController, Assembly-CSharp
+        m_MethodName: ResetRockToAiming
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1440971132}
+        m_TargetAssemblyTypeName: StoneCamera, Assembly-CSharp
+        m_MethodName: set_enabled
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+      - m_Target: {fileID: 1753255317}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &391262850
 GameObject:
   m_ObjectHideFlags: 0
@@ -5646,7 +5698,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &762185017
 RectTransform:
   m_ObjectHideFlags: 0
@@ -5810,69 +5862,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 4234847887749123310}
-        m_TargetAssemblyTypeName: TeleBehaviour, Assembly-CSharp
-        m_MethodName: BeginTeleport
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 348624015}
-        m_TargetAssemblyTypeName: Unity.Cinemachine.CinemachineSplineDolly, Unity.Cinemachine
-        m_MethodName: set_CameraPosition
-        m_Mode: 4
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 1972204369}
-        m_TargetAssemblyTypeName: Unity.Cinemachine.CinemachineSplineDolly, Unity.Cinemachine
-        m_MethodName: 
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: 
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 701015264}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 220665628}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 1
-        m_CallState: 2
-      - m_Target: {fileID: 182611487}
-        m_TargetAssemblyTypeName: UIFade, Assembly-CSharp
-        m_MethodName: StartFadingOut
+      - m_Target: {fileID: 349066008}
+        m_TargetAssemblyTypeName: GameOverUI, Assembly-CSharp
+        m_MethodName: RestartCurrentLevel
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -12501,6 +12493,17 @@ MonoBehaviour:
   onCompleteMove:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &4234847887749123312 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4916591769028373565, guid: 40b71bd5b0308664bbb87ca0a2ac444f, type: 3}
+  m_PrefabInstance: {fileID: 8521222884506870731}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1972204369}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1c08f3c8e5207d94484cf83594892116, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::RockController
 --- !u!4 &4529223994760200327
 Transform:
   m_ObjectHideFlags: 0
@@ -12685,7 +12688,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4916591769028373565, guid: 40b71bd5b0308664bbb87ca0a2ac444f, type: 3}
       propertyPath: gameOverEvent.m_PersistentCalls.m_Calls.Array.size
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 4916591769028373565, guid: 40b71bd5b0308664bbb87ca0a2ac444f, type: 3}
       propertyPath: gameOverEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
@@ -12693,7 +12696,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4916591769028373565, guid: 40b71bd5b0308664bbb87ca0a2ac444f, type: 3}
       propertyPath: gameOverEvent.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
-      value: 6
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4916591769028373565, guid: 40b71bd5b0308664bbb87ca0a2ac444f, type: 3}
       propertyPath: gameOverEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Target
@@ -12702,7 +12705,7 @@ PrefabInstance:
     - target: {fileID: 4916591769028373565, guid: 40b71bd5b0308664bbb87ca0a2ac444f, type: 3}
       propertyPath: gameOverEvent.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
-      objectReference: {fileID: 1840410133}
+      objectReference: {fileID: 701015264}
     - target: {fileID: 4916591769028373565, guid: 40b71bd5b0308664bbb87ca0a2ac444f, type: 3}
       propertyPath: gameOverEvent.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
       value: 2
@@ -12717,7 +12720,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4916591769028373565, guid: 40b71bd5b0308664bbb87ca0a2ac444f, type: 3}
       propertyPath: gameOverEvent.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
-      value: SetActive
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 4916591769028373565, guid: 40b71bd5b0308664bbb87ca0a2ac444f, type: 3}
       propertyPath: gameOverEvent.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
@@ -12725,7 +12728,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4916591769028373565, guid: 40b71bd5b0308664bbb87ca0a2ac444f, type: 3}
       propertyPath: gameOverEvent.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
-      value: UnityEngine.GameObject, UnityEngine
+      value: UIFade, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 4916591769028373565, guid: 40b71bd5b0308664bbb87ca0a2ac444f, type: 3}
       propertyPath: gameOverEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_BoolArgument
@@ -12733,7 +12736,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4916591769028373565, guid: 40b71bd5b0308664bbb87ca0a2ac444f, type: 3}
       propertyPath: gameOverEvent.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_BoolArgument
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4916591769028373565, guid: 40b71bd5b0308664bbb87ca0a2ac444f, type: 3}
       propertyPath: gameOverEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
