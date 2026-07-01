@@ -26,7 +26,7 @@ RenderSettings:
   m_AmbientIntensity: 1
   m_AmbientMode: 3
   m_SubtractiveShadowColor: {r: 0.42, g: 0.478, b: 0.627, a: 1}
-  m_SkyboxMaterial: {fileID: 0}
+  m_SkyboxMaterial: {fileID: 2100000, guid: 0f1401d983cde1c49a7f687a57e62c5a, type: 2}
   m_HaloStrength: 0.5
   m_FlareStrength: 1
   m_FlareFadeSpeed: 3
@@ -7724,7 +7724,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 926603557}
   m_HandleRect: {fileID: 926603556}
   m_Direction: 2
-  m_Value: 1
+  m_Value: 0
   m_Size: 1
   m_NumberOfSteps: 0
   m_OnValueChanged:
@@ -13509,6 +13509,10 @@ PrefabInstance:
       value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 4916591769028373565, guid: 40b71bd5b0308664bbb87ca0a2ac444f, type: 3}
+      propertyPath: inAirControlForce
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4916591769028373565, guid: 40b71bd5b0308664bbb87ca0a2ac444f, type: 3}
       propertyPath: gameOverEvent.m_PersistentCalls.m_Calls.Array.size
       value: 1
       objectReference: {fileID: 0}
@@ -13626,7 +13630,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8726225360512458199, guid: 40b71bd5b0308664bbb87ca0a2ac444f, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

@@ -10,6 +10,7 @@ TagManager:
   - PowerUp_Rocket
   - PowerUp_Shield
   - PowerUp_Wings
+  - Obstacle
   layers:
   - Default
   - TransparentFX
