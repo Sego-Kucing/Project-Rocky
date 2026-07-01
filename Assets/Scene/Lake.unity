@@ -7617,13 +7617,17 @@ PrefabInstance:
       propertyPath: cinematicDuration
       value: 6
       objectReference: {fileID: 0}
+    - target: {fileID: 6898297089144069387, guid: 40b71bd5b0308664bbb87ca0a2ac444f, type: 3}
+      propertyPath: availablePowerUps.Array.size
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8726225360512458199, guid: 40b71bd5b0308664bbb87ca0a2ac444f, type: 3}
       propertyPath: m_Name
       value: Rocky
       objectReference: {fileID: 0}
     - target: {fileID: 8961236911528154252, guid: 40b71bd5b0308664bbb87ca0a2ac444f, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
