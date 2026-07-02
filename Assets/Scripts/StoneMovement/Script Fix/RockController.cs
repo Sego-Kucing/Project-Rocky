@@ -32,6 +32,7 @@ public class RockController : MonoBehaviour
     public Slider powerSlider;
     [Tooltip("Masukkan object pembungkus UI untuk di hilangkan")]
     public GameObject powerUIContainer;
+    public GameObject movementUIContainer;
 
     [Header("In-Air Settings")]
     public float inAirControlForce = 5f;
@@ -175,6 +176,7 @@ public class RockController : MonoBehaviour
         if (powerUIContainer != null)
         {
             powerUIContainer.SetActive(false);
+            movementUIContainer.SetActive(true);
         }
 
         rb.isKinematic = false;
